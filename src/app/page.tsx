@@ -1,10 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import photosGet from "@/actions/photos-get";
+import Feed from "@/components/feed/feed";
 
-export default function Home() {
+export default async function Home() {
+  const data = await photosGet();
+
   return (
-    <main>
-      <h1 className="title">Dogs Next</h1>
-    </main>
+    <section className="container mainContainer">
+      <Feed photos={data} />
+    </section>
   );
 }
